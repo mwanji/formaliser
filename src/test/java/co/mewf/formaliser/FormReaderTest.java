@@ -6,13 +6,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import co.mewf.formaliser.FormReader;
-import co.mewf.formaliser.testutils.forms.BooleansForm;
-import co.mewf.formaliser.testutils.forms.ComplexForm;
-import co.mewf.formaliser.testutils.forms.MultiValuedForm;
-import co.mewf.formaliser.testutils.forms.PrimitiveNumberTypesForm;
-import co.mewf.formaliser.testutils.forms.SimpleForm;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,6 +15,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+
+import co.mewf.formaliser.testutils.forms.BooleansForm;
+import co.mewf.formaliser.testutils.forms.ComplexForm;
+import co.mewf.formaliser.testutils.forms.MultiValuedForm;
+import co.mewf.formaliser.testutils.forms.PrimitiveNumberTypesForm;
+import co.mewf.formaliser.testutils.forms.SimpleForm;
 
 public class FormReaderTest {
 
@@ -54,9 +53,7 @@ public class FormReaderTest {
   public void should_read_string_fields() {
     FormReader<SimpleForm> formReader = new FormReader<SimpleForm>(SimpleForm.class);
 
-    parameters.put("simpleForm.name", Arrays.asList("my name"));
-    parameters.put("simpleForm.homeAddress", Arrays.asList("my home address"));
-    parameters.put("simpleForm.workAddress", Arrays.asList("my work address"));
+    params("simpleForm", "name", "my name", "homeAddress", "my home address", "workAddress", "my work address");
 
     SimpleForm simpleForm = formReader.read(parameters);
 
